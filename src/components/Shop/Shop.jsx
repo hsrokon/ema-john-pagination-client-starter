@@ -10,7 +10,17 @@ const Shop = () => {
     const [cart, setCart] = useState([]);
 
     const {count} = useLoaderData();
-    console.log(count);
+    const itemsPerPage = 10;
+    const numberOfPages = Math.ceil( count / itemsPerPage );
+    
+    // const pages = [];
+    // for (let i = 0; i < numberOfPages; i++) {
+    //     pages.push(i+1);
+    // }
+
+    const pages = [...Array(numberOfPages).keys()]
+    console.log(pages);
+    
     
 
     useEffect(() => {
@@ -85,6 +95,13 @@ const Shop = () => {
                         <button className='btn-proceed'>Review Order</button>
                     </Link>
                 </Cart>
+
+                
+            </div>
+            <div className='pagination'>
+                    {
+                        pages.map(page => <button key={page}>{page+1}</button>)
+                    }
             </div>
         </div>
     );
