@@ -26,6 +26,11 @@
     align-items: center;
 }
 
-/* .pagination button {
+.pagination {
+    text-align: center;
+    margin-bottom: 5rem;
+}
 
-} */
+.pagination button {
+    margin-right: 3px;
+}
