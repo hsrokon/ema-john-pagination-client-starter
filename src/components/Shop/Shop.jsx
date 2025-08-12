@@ -114,6 +114,14 @@ const Shop = () => {
                 
             </div>
             <div className='pagination'>
+                <p>Current page: {currentPage}</p>
+                <button 
+                onClick={()=> {
+                    if (currentPage > 0) {
+                        setCurrentPage(currentPage-1)
+                    }
+                }}
+                >Prev</button>
                     {
                         pages.map(page => 
                         <button 
@@ -122,6 +130,13 @@ const Shop = () => {
                         onClick={()=> setCurrentPage(page)}
                         >{page}</button>)
                     }
+                    <button
+                    onClick={()=> {
+                        if (currentPage < pages.length - 1) {
+                            setCurrentPage(currentPage + 1)
+                        }
+                    }}
+                    >Next</button>
                     <select 
                     defaultValue={itemsPerPage}
                     onChange={e => {
