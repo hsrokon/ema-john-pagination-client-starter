@@ -34,3 +34,8 @@
 .pagination button {
     margin-right: 3px;
 }
+
+.pagination .selected {
+    background-color: orange;
+    color: black;
+}

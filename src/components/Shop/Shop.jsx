@@ -5,10 +5,21 @@ import Product from '../Product/Product';
 import './Shop.css';
 import { Link, useLoaderData } from 'react-router-dom';
 
+/**TODO
+ * get the total number of products
+ * number of items per page dynamic with dropdown
+ * get the current page
+ */
+
+
+
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [ itemsPerPage, setItemsPerPage ] = useState(10);
+    const [ currentPage, setCurrentPage ] = useState(1);
+    console.log(currentPage);
+    
     const {count} = useLoaderData();
     const numberOfPages = Math.ceil( count / itemsPerPage );
     
@@ -104,11 +115,19 @@ const Shop = () => {
             </div>
             <div className='pagination'>
                     {
-                        pages.map(page => <button key={page}>{page+1}</button>)
+                        pages.map(page => 
+                        <button 
+                        className={currentPage === page && 'selected'}
+                        key={page}
+                        onClick={()=> setCurrentPage(page)}
+                        >{page}</button>)
                     }
                     <select 
                     defaultValue={itemsPerPage}
-                    onChange={e => setItemsPerPage(parseInt(e.target.value))}
+                    onChange={e => {
+                        setItemsPerPage(parseInt(e.target.value))
+                        setCurrentPage(0)
+                    }}
                     name="" id="">
                         <option value="5">5</option>
                         <option value="10">10</option>
